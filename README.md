@@ -24,29 +24,6 @@ PicAgent 是一个面向科研场景的 LLM Agent 项目，支持论文检索、
 | 数据库 | MySQL |
 | 测试 | pytest |
 
-## 系统架构
-
-```mermaid
-flowchart TD
-    U["User"] --> F["React Frontend"]
-    F --> B["Django API"]
-    B --> A["ResearchAgent"]
-
-    A --> R["RAG Retriever"]
-    A --> S["Skill Loader"]
-    A --> M["Auto Memory"]
-    A --> H["Safety Hooks"]
-    A --> L["LLM Service"]
-
-    R --> BM25["BM25 Recall"]
-    R --> V["FAISS Vector Recall"]
-    R --> RR["RRF Fusion"]
-    RR --> RK["Rerank"]
-    RK --> EG["Evidence Gate"]
-
-    M --> MD["memory/*.md"]
-    M --> FTS["SQLite FTS5"]
-```
 
 ## 目录结构
 
