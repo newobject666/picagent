@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+
+# Node / frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+*.local
+
+# Runtime data
+memory/*
+!memory/.gitkeep
+*.sqlite3
+*.db
+*.log
+
+# Large generated/model artifacts
+models/
+models_cache/
+*.safetensors
+*.bin
+*.onnx
+*.pt
+*.pth
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

@@ -1,0 +1,242 @@
+[
+  {
+    "question": "CNN 在图像分类任务中的作用是什么？",
+    "gold_evidence": [
+      "CNN 使用卷积核提取图像局部空间特征。CNN 通过池化操作降低特征图尺寸并增强局部平移鲁棒性。CNN 在图像分类任务中常用于从像素中学习层级视觉表示。"
+    ],
+    "gold_claims": [
+      "CNN 使用卷积核提取图像局部空间特征",
+      "CNN 通过池化操作降低特征图尺寸并增强局部平移鲁棒性",
+      "CNN 在图像分类任务中常用于从像素中学习层级视觉表示"
+    ],
+    "should_refuse": false
+  },
+  {
+    "question": "CNN 为什么适合处理图像数据？",
+    "gold_evidence": [
+      "CNN 适合处理图像数据，因为卷积操作可以保留邻域结构。CNN 的参数共享机制减少了模型参数量。CNN 能够从边缘、纹理到对象部件逐层学习视觉特征。"
+    ],
+    "gold_claims": [
+      "CNN 适合处理图像数据，因为卷积操作可以保留邻域结构",
+      "CNN 的参数共享机制减少了模型参数量",
+      "CNN 能够从边缘、纹理到对象部件逐层学习视觉特征"
+    ],
+    "should_refuse": false
+  },
+  {
+    "question": "CNN 中卷积层和池化层分别有什么作用？",
+    "gold_evidence": [
+      "CNN 中卷积层负责提取局部特征。CNN 中池化层负责压缩特征图并降低计算量。卷积层和池化层组合可以形成多层次图像特征表达。"
+    ],
+    "gold_claims": [
+      "CNN 中卷积层负责提取局部特征",
+      "CNN 中池化层负责压缩特征图并降低计算量",
+      "卷积层和池化层组合可以形成多层次图像特征表达"
+    ],
+    "should_refuse": false
+  },
+  {
+    "question": "CNN 在目标检测中可以提供什么能力？",
+    "gold_evidence": [
+      "CNN 可以为目标检测提供空间特征提取能力。CNN 的特征图能够保留目标位置相关信息。目标检测模型常基于 CNN 特征图进行分类和边界框回归。"
+    ],
+    "gold_claims": [
+      "CNN 可以为目标检测提供空间特征提取能力",
+      "CNN 的特征图能够保留目标位置相关信息",
+      "目标检测模型常基于 CNN 特征图进行分类和边界框回归"
+    ],
+    "should_refuse": false
+  },
+  {
+    "question": "CNN 的局限性是什么？",
+    "gold_evidence": [
+      "CNN 对长距离依赖建模能力相对有限。CNN 通常依赖局部感受野逐层扩大来获取全局信息。CNN 在处理复杂全局关系时可能需要更深网络或额外模块。"
+    ],
+    "gold_claims": [
+      "CNN 对长距离依赖建模能力相对有限",
+      "CNN 通常依赖局部感受野逐层扩大来获取全局信息",
+      "CNN 在处理复杂全局关系时可能需要更深网络或额外模块"
+    ],
+    "should_refuse": false
+  },
+  {
+    "question": "LSTM 为什么能缓解普通 RNN 的长期依赖问题？",
+    "gold_evidence": [
+      "LSTM 通过门控机制控制信息写入、遗忘和输出。LSTM 的细胞状态可以在较长时间范围内传递信息。LSTM 相比普通 RNN 更能缓解梯度消失导致的长期依赖问题。"
+    ],
+    "gold_claims": [
+      "LSTM 通过门控机制控制信息写入、遗忘和输出",
+      "LSTM 的细胞状态可以在较长时间范围内传递信息",
+      "LSTM 相比普通 RNN 更能缓解梯度消失导致的长期依赖问题"
+    ],
+    "should_refuse": false
+  },
+  {
+    "question": "LSTM 的输入门、遗忘门和输出门有什么作用？",
+    "gold_evidence": [
+      "LSTM 的输入门决定当前输入写入多少新信息。LSTM 的遗忘门决定保留或丢弃多少历史信息。LSTM 的输出门决定当前时刻输出多少细胞状态信息。"
+    ],
+    "gold_claims": [
+      "LSTM 的输入门决定当前输入写入多少新信息",
+      "LSTM 的遗忘门决定保留或丢弃多少历史信息",
+      "LSTM 的输出门决定当前时刻输出多少细胞状态信息"
+    ],
+    "should_refuse": false
+  },
+  {
+    "question": "LSTM 在时间序列预测中的作用是什么？",
+    "gold_evidence": [
+      "LSTM 可以建模时间序列中的历史依赖关系。LSTM 适合处理带有顺序结构的连续观测数据。LSTM 在时间序列预测中可以利用过去状态辅助预测未来趋势。"
+    ],
+    "gold_claims": [
+      "LSTM 可以建模时间序列中的历史依赖关系",
+      "LSTM 适合处理带有顺序结构的连续观测数据",
+      "LSTM 在时间序列预测中可以利用过去状态辅助预测未来趋势"
+    ],
+    "should_refuse": false
+  },
+  {
+    "question": "LSTM 和普通 RNN 的主要区别是什么？",
+    "gold_evidence": [
+      "LSTM 在普通 RNN 的循环结构上加入了门控单元。LSTM 使用细胞状态保存较长期的信息。普通 RNN 通常只依赖隐藏状态传递历史信息。"
+    ],
+    "gold_claims": [
+      "LSTM 在普通 RNN 的循环结构上加入了门控单元",
+      "LSTM 使用细胞状态保存较长期的信息",
+      "普通 RNN 通常只依赖隐藏状态传递历史信息"
+    ],
+    "should_refuse": false
+  },
+  {
+    "question": "LSTM 的局限性有哪些？",
+    "gold_evidence": [
+      "LSTM 的序列计算难以充分并行化。LSTM 在长序列任务中计算成本会随时间步增加。LSTM 对超长上下文的建模能力仍可能受限。"
+    ],
+    "gold_claims": [
+      "LSTM 的序列计算难以充分并行化",
+      "LSTM 在长序列任务中计算成本会随时间步增加",
+      "LSTM 对超长上下文的建模能力仍可能受限"
+    ],
+    "should_refuse": false
+  },
+  {
+    "question": "RNN 的基本思想是什么？",
+    "gold_evidence": [
+      "RNN 通过循环连接在序列时间步之间传递隐藏状态。RNN 可以利用前面时间步的信息影响当前输出。RNN 常用于处理文本、语音和时间序列等顺序数据。"
+    ],
+    "gold_claims": [
+      "RNN 通过循环连接在序列时间步之间传递隐藏状态",
+      "RNN 可以利用前面时间步的信息影响当前输出",
+      "RNN 常用于处理文本、语音和时间序列等顺序数据"
+    ],
+    "should_refuse": false
+  },
+  {
+    "question": "RNN 为什么适合处理序列数据？",
+    "gold_evidence": [
+      "RNN 的隐藏状态可以记录序列历史信息。RNN 对每个时间步重复使用相同参数处理输入。RNN 能够按照输入顺序逐步更新内部状态。"
+    ],
+    "gold_claims": [
+      "RNN 的隐藏状态可以记录序列历史信息",
+      "RNN 对每个时间步重复使用相同参数处理输入",
+      "RNN 能够按照输入顺序逐步更新内部状态"
+    ],
+    "should_refuse": false
+  },
+  {
+    "question": "RNN 的梯度消失问题是什么？",
+    "gold_evidence": [
+      "RNN 在长序列反向传播时可能出现梯度消失。梯度消失会导致模型难以学习远距离时间步之间的依赖。普通 RNN 因此在长期依赖建模上存在局限。"
+    ],
+    "gold_claims": [
+      "RNN 在长序列反向传播时可能出现梯度消失",
+      "梯度消失会导致模型难以学习远距离时间步之间的依赖",
+      "普通 RNN 因此在长期依赖建模上存在局限"
+    ],
+    "should_refuse": false
+  },
+  {
+    "question": "RNN 在自然语言处理中可以做什么？",
+    "gold_evidence": [
+      "RNN 可以用于语言模型任务。RNN 可以用于序列标注任务。RNN 可以根据前文隐藏状态生成或预测后续文本。"
+    ],
+    "gold_claims": [
+      "RNN 可以用于语言模型任务",
+      "RNN 可以用于序列标注任务",
+      "RNN 可以根据前文隐藏状态生成或预测后续文本"
+    ],
+    "should_refuse": false
+  },
+  {
+    "question": "RNN 和前馈神经网络有什么区别？",
+    "gold_evidence": [
+      "RNN 具有循环连接并维护隐藏状态。前馈神经网络通常不显式保存时间步之间的状态。RNN 能够利用序列历史信息处理当前输入。"
+    ],
+    "gold_claims": [
+      "RNN 具有循环连接并维护隐藏状态",
+      "前馈神经网络通常不显式保存时间步之间的状态",
+      "RNN 能够利用序列历史信息处理当前输入"
+    ],
+    "should_refuse": false
+  },
+  {
+    "question": "Transformer 的核心机制是什么？",
+    "gold_evidence": [
+      "Transformer 的核心机制是自注意力。自注意力可以让每个 token 与序列中其他 token 建立依赖关系。Transformer 通过多头注意力从不同表示子空间建模关系。"
+    ],
+    "gold_claims": [
+      "Transformer 的核心机制是自注意力",
+      "自注意力可以让每个 token 与序列中其他 token 建立依赖关系",
+      "Transformer 通过多头注意力从不同表示子空间建模关系"
+    ],
+    "should_refuse": false
+  },
+  {
+    "question": "Transformer 为什么比 RNN 更容易并行训练？",
+    "gold_evidence": [
+      "Transformer 不依赖循环结构逐步处理序列。Transformer 可以在同一层中并行计算多个 token 的表示。相比 RNN，Transformer 的自注意力结构更适合并行训练。"
+    ],
+    "gold_claims": [
+      "Transformer 不依赖循环结构逐步处理序列",
+      "Transformer 可以在同一层中并行计算多个 token 的表示",
+      "相比 RNN，Transformer 的自注意力结构更适合并行训练"
+    ],
+    "should_refuse": false
+  },
+  {
+    "question": "Transformer 中位置编码的作用是什么？",
+    "gold_evidence": [
+      "Transformer 使用位置编码向模型提供 token 的顺序信息。自注意力本身不包含天然的序列位置信息。位置编码帮助 Transformer 区分不同 token 在序列中的位置。"
+    ],
+    "gold_claims": [
+      "Transformer 使用位置编码向模型提供 token 的顺序信息",
+      "自注意力本身不包含天然的序列位置信息",
+      "位置编码帮助 Transformer 区分不同 token 在序列中的位置"
+    ],
+    "should_refuse": false
+  },
+  {
+    "question": "Transformer 在 NLP 中有什么优势？",
+    "gold_evidence": [
+      "Transformer 可以建模长距离依赖。Transformer 支持并行计算序列表示。Transformer 已被广泛用于机器翻译、文本生成和语言理解任务。"
+    ],
+    "gold_claims": [
+      "Transformer 可以建模长距离依赖",
+      "Transformer 支持并行计算序列表示",
+      "Transformer 已被广泛用于机器翻译、文本生成和语言理解任务"
+    ],
+    "should_refuse": false
+  },
+  {
+    "question": "Transformer 的计算开销主要来自哪里？",
+    "gold_evidence": [
+      "Transformer 的计算开销主要来自自注意力矩阵。标准自注意力的复杂度会随序列长度平方增长。长序列输入会显著增加 Transformer 的显存和计算成本。"
+    ],
+    "gold_claims": [
+      "Transformer 的计算开销主要来自自注意力矩阵",
+      "标准自注意力的复杂度会随序列长度平方增长",
+      "长序列输入会显著增加 Transformer 的显存和计算成本"
+    ],
+    "should_refuse": false
+  }
+]

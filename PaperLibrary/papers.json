@@ -1,0 +1,650 @@
+
+[
+  {
+    "title": "Disentangling Polysemantic Channels in Convolutional Neural Networks",
+    "keywords": [
+      "Polysemantic Channels",
+      "Mechanistic Interpretability",
+      "Feature Disentanglement",
+      "CNN Interpretability"
+    ],
+    "year": "2025",
+    "summary": "针对卷积神经网络中单个神经元通道同时编码多个语义上不相关的视觉概念（即多语义通道）导致模型可解释性严重下降的问题，本文提出了一种基于权重重组的新型解耦算法。该算法通过分析通道在不同输入样本上的激活模式，识别并分离出耦合的多个概念子空间，将原始卷积核分解为多个低秩组件的线性组合，每个组件对应单一语义概念。实验结果表明，该方法在保持原始模型性能（精度下降不超过0.5%）的前提下，将ResNet-50中超过60%的多语义通道成功解耦，显著提升了特征可视化的清晰度和神经元因果分析的可靠性。"
+  },
+  {
+    "title": "Convolution goes higher-order: a biologically inspired mechanism empowers image classification",
+    "keywords": [
+      "Higher-order Convolution",
+      "Volterra Expansion",
+      "Biologically Inspired Vision",
+      "Image Classification"
+    ],
+    "year": "2025",
+    "summary": "受生物初级视觉皮层中神经元对视觉刺激的非线性乘性交互机制启发，本文提出了一种高阶卷积神经网络框架VolterraNet，通过在传统线性卷积基础上引入Volterra级数展开的二阶和三阶核函数，显式建模像素对之间的联合调制效应。与传统CNN仅能捕获线性加权特征不同，本文方法能够表征图像中的相位对齐、共调制边界等非线性结构信息。在ImageNet-1K上，VolterraNet-50以比ResNet-50少30%的参数实现了2.7%的Top-1精度提升，且理论分析表明其最优性能与自然图像像素强度分布的稀疏超高斯特性之间存在内在一致性。"
+  },
+  {
+    "title": "Spatial Transformer Correlation Network for natural image classification",
+    "keywords": [
+      "Correlation Image",
+      "Spatial Transformer Network",
+      "Complex-valued Neural Network",
+      "Image Classification"
+    ],
+    "year": "2025",
+    "summary": "本文首次将相关性图像的概念从遥感图像分析领域引入自然图像分类任务，提出了一种端到端的空间变换相关网络STCNet。该方法首先通过多个并行的空间变换网络为静态输入图像生成一组参数化仿射变换序列，随后计算变换后图像对之间的二阶统计相关性，构建包含丰富相对位置信息的复数域相关特征张量。为了在复数域中高效处理这一特征，本文设计了一种复数残差卷积模块，其卷积核同时建模相关性的实部与虚部之间的跨分量交互。在CIFAR-10、CIFAR-100和SVHN数据集上，STCNet分别达到99.2%、96.1%和99.5%的准确率，超越传统CNN结构2-4个百分点，且对旋转和尺度变化具有更强的鲁棒性。"
+  },
+  {
+    "title": "CFNet: Achieving Practical Speedup in Lightweight CNNs via Channel-Focused Design and Cross-Channel Mixing",
+    "keywords": [
+      "Lightweight CNN",
+      "Channel-Focused Convolution",
+      "Cross-Channel Mixing",
+      "Model Efficiency"
+    ],
+    "year": "2025",
+    "summary": "本文揭示了轻量化卷积神经网络中普遍存在的一个关键矛盾：理论FLOPs降低与实际推理延迟之间往往存在显著差距，这一差距主要源于碎片化内存访问模式和通道间低效的信息协调机制。为此，本文提出CFNet架构，其核心包括两个创新组件：一是通道聚焦卷积（Channel-Focused Convolution），通过将逐深度卷积与逐点卷积融合为单一内存连续的操作，将内存访问次数减少约40%；二是自适应跨通道混合单元（Adaptive Cross-Channel Mixing Unit），利用分组变换和通道重排实现跨通道信息流动的计算复杂度从O(C^2)降低到O(C log C)。在ImageNet上，CFNet-Mobile以仅1.8M参数量达到74.6%的Top-1精度，相比MobileNetV3在GPU上实现了1.7倍的实际吞吐量提升，延迟降低2.4倍。"
+  },
+  {
+    "title": "UniConvNet: Expanding Effective Receptive Field while Maintaining Asymptotically Gaussian Distribution for ConvNets of Any Scale",
+    "keywords": [
+      "Effective Receptive Field",
+      "Asymptotically Gaussian Distribution",
+      "Large Kernel ConvNets",
+      "Universal Architecture"
+    ],
+    "year": "2025",
+    "summary": "本文从理论角度重新审视了卷积神经网络的有效感受野（Effective Receptive Field, ERF）与其渐近高斯分布特性之间的关系，证明了当卷积层数趋于无穷时，任意卷积序列的ERF分布必然收敛于高斯分布，这限制了传统CNN捕获长程依赖的能力。为此，本文提出UniConvNet通用架构，引入了两个创新模块：一是三层感受野聚合器（Triple-stage Receptive Field Aggregator），通过并行的扩张卷积路径和可学习的融合权重打破ERF的高斯收敛性约束；二是层算子调制（Layer-wise Operator Modulation），利用引导锚点机制在深层动态调整核权重的分布形状。实验结果表明，UniConvNet能够在任意网络深度下将ERF扩展至输入尺寸的80%以上，同时保持训练稳定性，在ImageNet-1K上达到84.2%的Top-1精度（使用12层小核结构），超越了大核CNN模型RepLKNet（84.0%）且FLOPs降低约35%。"
+  },
+  {
+    "title": "SBp-UNet: balancing efficiency and accuracy in CNNs with application to pedestrian segmentation",
+    "keywords": [
+      "SqueezeNet",
+      "Feature Reuse",
+      "Pedestrian Segmentation",
+      "Model Compression"
+    ],
+    "year": "2025",
+    "summary": "针对移动端行人语义分割任务中CNN模型精度与计算效率难以两全的问题，本文提出了一种编解码器架构SBp-UNet。该架构对UNet进行三方面改进：第一，将传统卷积块替换为经过参数重组的SqueezeNet Fire模块，压缩比达到9.33倍（从23.5M参数降至2.52M）；第二，在编码器与解码器的同层特征之间引入多尺度旁路连接，不仅保留原始UNet的跳连接，还额外增加了动态权重融合路径，使深层特征能够自适应地从浅层特征中选择性重用语义信息；第三，在解码器末端设计了逐点门控注意力模块，显著抑制背景区域的误激活。在Cityscapes行人类别上，SBp-UNet的mIoU达到78.3%（仅比UNet低0.7%），但单张图像推理时间从42ms降至9ms，模型存储空间从90MB压缩至10MB，适用于内存受限的嵌入式部署场景。"
+  },
+  {
+    "title": "Emergent neuronal mechanisms mediating covert attention in convolutional neural networks",
+    "keywords": [
+      "Covert Attention",
+      "Neuroscience",
+      "CNN Interpretability",
+      "Bayesian Ideal Observer"
+    ],
+    "year": "2025",
+    "summary": "本文从神经科学计算原理出发，对标准训练得到的CNN（ResNet-50和VGG-16）进行了大规模神经元水平的隐蔽注意行为分析。研究者在180万个神经元中识别出三类自发放到的注意调节神经元类型：位置求和细胞（position-sum neurons）在多个空间位置呈现一致的响应增益变化、位置对立细胞（position-opponent neurons）对不同位置呈现相反的响应极性，以及复杂注意调制细胞（complex modulation neurons）。通过构建贝叶斯理想观察者模型，本文证明了这些神经元群体的协同活动等效于一种显式的空间注意力机制，其信噪比增益可达4.2dB。更重要的是，模型预测的空间注意分布与从小鼠上丘电生理记录中获得的真实神经活动数据之间具有0.81的相关性，为CNN作为大脑视觉系统计算模型提供了有力证据。"
+  },
+  {
+    "title": "Frequency Dynamic Convolution for Dense Image Prediction",
+    "keywords": [
+      "Dynamic Convolution",
+      "Frequency Domain",
+      "Fourier Transform",
+      "Dense Prediction"
+    ],
+    "year": "2025",
+    "summary": "针对现有动态卷积方法由于权重共享导致频率适应性受限的问题，本文提出频率动态卷积（FDConv），将动态权重的生成从空间域迁移到频域。具体而言，FDConv首先通过离散余弦变换将输入特征图分解为多个频带分量，然后使用轻量级频率门控网络为每个频带分别预测卷积核的频谱调制系数，最后通过逆变换重构得到空域卷积核。这种方法允许模型以固定参数预算（例如n个基核）生成指数级（2^n种）多组具有不同频率响应特性的动态卷积核。在COCO目标检测任务上，将YOLOv8中的传统卷积替换为FDConv后，mAP从51.2%提升至53.8%，参数量仅增加0.8M；在Cityscapes语义分割上，DeepLabV3+的mIoU从79.5%提升至82.1%，计算开销几乎可忽略。"
+  },
+  {
+    "title": "Revisiting Convolution Architecture in the Realm of DNA Foundation Models",
+    "keywords": [
+      "DNA Foundation Models",
+      "Dilated Convolution",
+      "Gated Convolution",
+      "Genomics"
+    ],
+    "year": "2025",
+    "summary": "在基因组学大模型领域，Transformer和状态空间模型（如Mamba）因其长序列建模能力而备受关注，但本文通过系统性实证研究证明，精心设计的CNN架构仍然具有显著优势。本文提出ConvNova，利用三种关键技术：第一，多尺度空洞卷积金字塔，通过7个不同扩张率的并行分支捕获DNA序列中从局部基序（50bp尺度）到远程调控元件（10kbp尺度）的多层次模式；第二，门控卷积单元结合SwiGLU激活，有效建模核苷酸间的非线性依赖；第三，双分支门控框架，将序列正向和反向互补两条通路特征进行竞争性融合，模拟DNA的双链对称性。在GUE基准的8个基因组任务（包括启动子检测、剪接位点预测等）中，ConvNova在5个任务上超越了Transformer（DNABERT-2）和Mamba（Caduceus），平均精度提升2.3%，同时参数量减少约40%，训练速度提高3倍。"
+  },
+  {
+    "title": "Image classification network of holographic gradient differential convolution",
+    "keywords": [
+      "Gradient Differential Convolution",
+      "Multi-scale Feature Aggregation",
+      "Edge Detection",
+      "Image Classification"
+    ],
+    "year": "2025",
+    "summary": "针对传统卷积神经网络对图像边缘、纹理等高频结构信息捕获能力不足的问题，本文提出全息梯度差分卷积Holographic Gradient Differential Convolution（HGDConv）。该方法与常规卷积的区别在于：HGDConv不仅计算特征图的加权和，还在每个局部感受野内沿0°、45°、90°和135°四个方向计算中心像素与邻域像素之间的定向梯度差分，并将这些差分向量与原始特征图在通道维度上拼接融合。为了充分利用这些多方向梯度信息，本文进一步设计了多尺度特征聚合细化模块FARM（Feature Aggregation and Refinement Module），该模块通过三支路并行结构（全局平均池化分支、通道注意力分支、空间注意力分支）对不同尺度的梯度差分响应进行自适应加权融合。在CIFAR-10上，将ResNet-56的标准卷积替换为HGDConv后，分类准确率从93.5%提升至95.8%；在SVHN上达到98.1%的准确率，相比基线提升2.3%；同时在边缘检测任务上的迁移学习结果显示F1-score提升约8%，验证了模型对结构化边缘信息的更强表征能力。"
+  },
+  {
+    "title": "ADMS-LSTM: A multi-scale stacked LSTMs long-term prediction method based on an adaptive decomposition framework with DFT-AutoCorrelation",
+    "keywords": [
+      "Multi-scale LSTM",
+      "Adaptive Decomposition",
+      "DFT-AutoCorrelation",
+      "Long-term Time Series Forecasting"
+    ],
+    "year": "2025",
+    "summary": "针对长时预测中复杂时间模式难以学习以及预测误差累积的双重挑战，本文提出了一种创新的ADMS-LSTM框架，首次基于严格的数学理论自适应选择分解窗口进行长序列信息学习。该框架包含三个核心模块：一是基于离散傅里叶变换和自相关机制的适应性分解窗口分析模块，能够自动确定最优粒度层级；二是金字塔分解模块，通过多尺度序列捕获跨越大时间跨度的历史依赖关系；三是融合了三次样条插值的预测融合模块，采用堆叠式LSTM架构来学习多尺度序列间的跨距离依赖。在六个公开基准数据集上的实验表明，该方法有效缓解了误差累积问题，实现了对复杂时间模式的长程捕获，性能超越了当前最先进的Transformer和RNN类方法。论文还指出，这是首个基于严格数理理论实现分解窗口自适应选择的长序列预测工作[citation:1]。"
+  },
+  {
+    "title": "Quantum-enhanced LSTM for predictive maintenance in industrial IoT systems",
+    "keywords": [
+      "Quantum LSTM",
+      "Predictive Maintenance",
+      "Industrial IoT",
+      "Quantum Machine Learning"
+    ],
+    "year": "2025",
+    "summary": "本文提出了一种量子增强型LSTM模型，专门面向工业物联网系统中的预测性维护任务。该模型采用混合量子-经典架构，通过精心设计的量子通道来保持关键的时序依赖关系，使量子计算机能够处理高维工业传感器数据。在方法论层面，该方法包含三个独特创新：一是协同式量子-经典框架，让量子电路处理复杂的高维传感器数据分析；二是量子通道设计，专门用于保持工业时序测量中的时间依赖关系；三是通过概率主成分分析进行特征降维。在SECOM、C-MAPSS和IMMD三个公开工业数据集上的实验结果显示，QE-LSTM在F1分数上相比经典LSTM提升了4至5个百分点，RMSE降低了12.1%，NASA评分（对延迟预测高度敏感）降低了12.8%，配对t检验p值小于0.01，证明了量子增强路线的统计显著性[citation:3]。"
+  },
+  {
+    "title": "Long Short-Term Memory Networks: A Comprehensive Survey",
+    "keywords": [
+      "LSTM Survey",
+      "Gating Mechanisms",
+      "Bidirectional LSTM",
+      "Attention Mechanism",
+      "Vanishing Gradient"
+    ],
+    "year": "2025",
+    "summary": "本文是一篇关于LSTM网络的综合性综述论文，系统回顾了从1997年Hochreiter和Schmidhuber提出LSTM以来的架构演进与应用发展。文章详细阐述了LSTM的核心组件——细胞状态和三种门控机制（输入门、遗忘门、输出门）的数学原理及协同工作方式，并指出遗忘门是解决梯度消失问题的关键设计。在应用层面，综述覆盖了自然语言处理（语言建模、机器翻译、情感分析）、时间序列分析（金融、医疗、气象预测）和语音识别三大领域。此外，文章还总结了几种重要的LSTM变体，包括双向LSTM（同时利用前后上下文信息）、堆叠式LSTM（增加模型容量）以及注意力机制与LSTM的融合架构。最后，文章系统分析了LSTM面临的主要挑战：高计算复杂度、大量数据需求和训练困难，并指出了未来的研究方向[citation:4]。"
+  },
+  {
+    "title": "Trade-off Analysis of Efficiency and Accuracy in GRU vs LSTM",
+    "keywords": [
+      "GRU",
+      "LSTM",
+      "Efficiency-Accuracy Trade-off",
+      "Model Selection",
+      "Hardware-aware Computing"
+    ],
+    "year": "2025",
+    "summary": "本文通过系统的数学分析和控制实验，对GRU和LSTM之间的效率-精度权衡进行了量化研究。研究发现，GRU在训练速度上比LSTM快30-40%，参数量减少25-26%，这种效率优势主要源于GRU将LSTM的三个门控单元简化为更新门和重置门两个。然而，在预测精度方面，LSTM在股票波动率预测中将误差降低了36.8%，在极端寒潮预测中将误差降低了33%，显示出在处理需要长期记忆的复杂时序模式时的显著优势。消融研究进一步验证了LSTM遗忘门和GRU重置门的关键作用。基于这些发现，论文提出了一个硬件感知的决策框架，引入了效率增益系数（α）和精度损失系数（β），为实际应用中的模型选择提供了量化指导：对于延迟敏感的边缘计算场景推荐GRU，而对精度要求高的关键任务则推荐LSTM[citation:5]。"
+  },
+  {
+    "title": "A hybrid spatiotemporal LSTM and transformer network for cellular traffic prediction",
+    "keywords": [
+      "Spatiotemporal LSTM",
+      "Spatiotemporal Transformer",
+      "Cellular Traffic Prediction",
+      "ConvLSTM"
+    ],
+    "year": "2025",
+    "summary": "本文提出了一种名为HSLTNet的混合网络模型，用于解决5G蜂窝网络流量预测中的复杂时空特征捕捉问题。该模型采用双模块架构：时空LSTM模块用于捕获流量的全局时空特征，克服了传统ConvLSTM在捕捉复杂全局时空动态方面的局限性；时空Transformer模块则用于直观地捕获相邻区域之间的动态时空关系，有效解决了现有方法对局部空间依赖性关注不足的问题。论文将网络流量视为图像处理问题，利用计算机视觉技术辅助特征提取。在真实世界蜂窝流量数据集上的实验结果显示，HSLTNet在各项评估指标上均显著超越基线方法，验证了其在捕捉时空数据中固有的局部空间动态依赖和全局特征方面的综合优势[citation:6]。"
+  },
+  {
+    "title": "A review on long short-term memory combination development",
+    "keywords": [
+      "LSTM Combination",
+      "Hybrid Models",
+      "Systematic Literature Review",
+      "Model Fusion",
+      "Deep Learning"
+    ],
+    "year": "2025",
+    "summary": "本文是一篇关于LSTM与其他方法组合发展的系统性文献综述，通过九个研究问题（包括开发框架、数据预处理、学习过程、任务类型、优化评估、领域问题、趋势和挑战）对LSTM组合模型的发展进行了全面梳理。综述发现，LC模型已在26种类型的任务中得到应用，其中预测、检测、预报、分类和识别是最常见的任务类型。LSTM组合模型的发展趋势表明，LSTM正与更广泛的其他方法协同合作，应用范围不断扩大。在模型结构层面，综述总结了LSTM细胞、整体架构和记忆模型的各类发展变体。最后，文章识别出LC模型面临的六个主要挑战：研究区域覆盖、数据质量问题、模型开发难度、实现领域适配性、性能指标选择和计算效率优化，为后续研究提供了明确方向[citation:7]。"
+  },
+  {
+    "title": "QL-LSTM: A Parameter-Efficient LSTM for Stable Long-Sequence Modeling",
+    "keywords": [
+      "Parameter-efficient LSTM",
+      "Shared Gating Mechanism",
+      "Long-range Dependency",
+      "Skip Connections",
+      "Model Compression"
+    ],
+    "year": "2025",
+    "summary": "本文提出了一种名为QL-LSTM（Quantum-Leap LSTM）的新型循环架构，旨在解决传统LSTM的两大核心限制：冗余的门控参数和长距离信息保持能力的不足。该架构包含两个独立组件：参数共享统一门控机制，将所有门控变换替换为单一共享权重矩阵，在保持完整门控行为的同时将参数量减少约48%；层级门控循环与加法跳跃连接组件，引入一个无乘法路径来改善长程信息流动并减缓遗忘门退化。在IMDB长文档数据集上的情感分类评估显示，QL-LSTM在使用显著更少参数量的情况下达到了具有竞争力的准确率。论文也坦诚指出，尽管PSUG和HGR-ASC组件在单位时间步上更高效，但当前原型仍受限于循环模型的固有序列特性，需要进一步的核级优化才能实现墙钟速度的提升[citation:8]。"
+  },
+  {
+    "title": "A Survey of Deep Learning for Time Series Forecasting: Theories, Datasets, and State-of-the-Art Techniques",
+    "keywords": [
+      "Time Series Forecasting",
+      "Deep Learning Survey",
+      "LSTM",
+      "Transformer",
+      "GNN",
+      "Benchmark Datasets"
+    ],
+    "year": "2025",
+    "summary": "这是一篇关于深度学习在时间序列预测领域应用的综合性综述论文，涵盖了四大核心范式：卷积神经网络（擅长提取局部时间特征）、循环神经网络及其高级变体LSTM和GRU（设计用于序列依赖建模）、图神经网络（专门处理具有时空依赖的结构化关系数据）以及基于Transformer的模型（利用自注意力机制高效捕获全局时序模式）。在LSTM方面，文章详细分析了其门控机制如何解决传统RNN的梯度消失问题，以及在处理长期依赖时的优势和应用场景。综述提供了严格的理论分析，讨论了最新的算法进展（如TCN、注意力机制、混合架构），并汇总了广泛使用的基准数据集（如ETT、交通流量、金融指标）和标准化评估指标。最后，文章讨论了包括处理不规则采样间隔、整合领域知识提升鲁棒性、以及管理计算复杂度在内的关键挑战[citation:9]。"
+  },
+  {
+    "title": "Comparing LSTM, GRU, and CNN for forecasting the density of mobile network users and flows",
+    "keywords": [
+      "LSTM",
+      "GRU",
+      "CNN",
+      "Mobile Network Traffic",
+      "Model Comparison"
+    ],
+    "year": "2025",
+    "summary": "本文针对电信运营商在人口密集城市区域进行移动网络用户密度预测的关键需求，对三种深度学习模型——长短期记忆网络、门控循环单元和卷积神经网络进行了系统的比较分析。研究使用来自上海市的真实数据集，评估了各模型在预测移动网络用户密度和数据流量方面的性能。实验结果表明，在该特定任务和数据条件下，CNN架构展现了最优的预测性能。这一发现对于电信行业的模型选择具有重要参考价值：CNN虽然在设计上并非专门处理序列数据，但其层次化特征提取能力在用户密度预测任务中表现出竞争甚至超越循环架构的效果。论文为深度学习模型在实际网络优化和战略规划任务中的选择提供了基础性指导[citation:10]。"
+  },
+  {
+    "title": "Quantum Doubly Stochastic Transformers",
+    "keywords": [
+      "Quantum Transformer",
+      "Doubly Stochastic Attention",
+      "Variational Quantum Circuit",
+      "Vision Transformer",
+      "NeurIPS 2025"
+    ],
+    "year": "2025",
+    "summary": "本文提出了一种混合经典-量子架构QDSFormer，首次将参数化量子电路引入Transformer的自注意力层以替代传统softmax归一化。研究发现，经典Sinkhorn算法生成的双随机注意力矩阵是迭代、近似且非参数化的，而量子电路能够产生具有全新量子归纳偏置的双随机矩阵（DSM），其多样性更高且信息保持能力优于经典算子。理论分析表明，这种量子DSM能够产生更丰富的注意力分布模式，有效缓解了标准softmax导致的训练不稳定问题。在多个小规模图像识别任务上，QDSFormer不仅持续超越标准Vision Transformer和基于经典Sinkhorn的双随机Transformer变体，还展现出更好的训练稳定性和更低的性能波动，为解决ViT在小数据集上训练不稳定的固有问题提供了全新的量子计算路径。[citation:1]"
+  },
+  {
+    "title": "The End of Transformers? On Challenging Attention and the Rise of Sub-Quadratic Architectures",
+    "keywords": [
+      "Transformer",
+      "Sub-quadratic Attention",
+      "State Space Models",
+      "RNN",
+      "Survey"
+    ],
+    "year": "2025",
+    "summary": "本文是一篇系统性的综述论文，核心议题是评估纯注意力Transformer在未来序列建模领域的统治地位是否即将被打破。文章系统梳理了近年来涌现的四类次二次复杂度替代架构：近似注意力机制（包括基于核方法的线性注意力和低秩分解方法）、稀疏注意力模式（如滑动窗口和可学习稀疏模式）、线性RNN类模型（包括HGRN、RWKV-7等），以及状态空间模型（如Mamba系列及其与Transformer的混合体）。作者从计算/内存复杂度、训练并行性、推理效率、表达能力等多个维度进行了深入比较分析，并提供了SOTA模型的基准测试结果。文章特别指出，虽然FlashAttention、PagedAttention等系统级优化显著提升了标准注意力的实际效率，但其O(n²)的根本复杂度瓶颈在面对超长上下文时仍无法突破。结论认为，纯注意力Transformer的主导地位可能正在被混合架构和SSM所挑战，但具体取决于任务场景和序列长度要求。[citation:2][citation:4]"
+  },
+  {
+    "title": "IIET: Efficient Numerical Transformer via Implicit Iterative Euler Method",
+    "keywords": [
+      "ODE-based Transformer",
+      "Implicit Euler Method",
+      "Model Compression",
+      "Iterative Influence-Aware Distillation",
+      "EMNLP 2025"
+    ],
+    "year": "2025",
+    "summary": "本文针对基于ODE的高阶数值方法Transformer（如PCformer）存在的性能-效率权衡问题进行了深入分析，指出现有蒸馏等效率优化技术对这类模型性能具有破坏性影响。基于此，作者提出了一种新颖的迭代隐式欧拉Transformer（IIET），通过将高阶数值方法简化为迭代隐式欧拉方法，在提升性能的同时有效促进了模型压缩。更进一步，论文设计了迭代影响感知蒸馏（IIAD）框架，通过灵活的可调节阈值使用户能够动态平衡性能与效率。在lm-evaluation-harness基准上，IIET相比标准Transformer平均准确率提升2.65%，相比PCformer提升0.8%。其高效变体E-IIET在仅损失0.6%原始任务精度的情况下将推理开销削减55%，而最高效的IIET变体在与标准Transformer速度相当的前提下实现了超过1.6%的平均性能增益。[citation:3]"
+  },
+  {
+    "title": "TWEO: Transformers Without Extreme Outliers Enables FP8 Training And Quantization For Dummies",
+    "keywords": [
+      "Transformer Training",
+      "FP8 Quantization",
+      "Activation Outliers",
+      "Loss Function Design",
+      "Model Compression"
+    ],
+    "year": "2025",
+    "summary": "本文从根本上挑战了Transformer中极端激活值异常（outliers）是数据驱动的传统观点，通过严谨的理论分析和实验证明，这些极端异常值实际上是训练过程中由权重矩阵的特定结构属性（即列共线性）机械产生的与数据无关的伪像。基于这一重要洞察，作者提出了一种非侵入式的辅助损失函数TWEO，该损失项异常简单却极其有效：能够将激活异常值从10000+降至20以下，从而首次实现了无需任何工程技巧或架构修改的全模型FP8预训练（同时适用于LLM和ViT）。实验结果表明，在标准FP8训练灾难性崩溃的情况下，TWEO达到了与BF16基线相当的性能，同时将训练吞吐量提升36%。此外，TWEO还开启了一种全新的量化范式——在TWEO训练的模型上，硬件友好的W8A8逐张量静态量化首次实现了SOTA性能，而这种量化方式此前因异常值问题被认为完全不可用。[citation:5]"
+  },
+  {
+    "title": "Seed-Induced Uniqueness in Transformer Models: Subspace Alignment Governs Subliminal Transfer",
+    "keywords": [
+      "Transformer Security",
+      "Subliminal Transfer",
+      "Subspace Alignment",
+      "Model Initialization",
+      "IEEE CARS 2025"
+    ],
+    "year": "2025",
+    "summary": "本文研究了Transformer模型中的潜隐迁移现象，即教师模型能够嵌入可被学生模型线性解码的隐藏特征而不损害主任务性能。通过使用解耦了公共标签和私有标签的合成语料库，作者在匹配和独立随机初始化条件下对学生模型进行了蒸馏分析。研究发现了一个关键结论：迁移强度取决于特征判别子空间内的对齐程度——相同随机种子的学生模型继承了对齐性，展现出更高的泄露率（τ≈0.24）；而不同种子的学生尽管全局CKA相似度大于0.9，但其额外准确率显著降低（τ≈0.12-0.13）。论文形式化了子空间级CKA诊断方法和残差探针分析，证明泄露率由特征判别子空间内的对齐程度而非全局表征相似性决定。安全性控制手段（投影惩罚、对抗反转等）能够有效减少相同基模型中的泄露而不损害公共任务保真度，为安全的Transformer多模型部署提供了子空间感知的诊断框架。[citation:6]"
+  },
+  {
+    "title": "Transformer Models in Natural Language Processing: A Comprehensive Review and Prospects for Future Development",
+    "keywords": [
+      "Transformer",
+      "Pre-trained Language Models",
+      "BERT",
+      "GPT",
+      "NLP Survey"
+    ],
+    "year": "2025",
+    "summary": "本文是一篇关于Transformer预训练语言模型的综合性综述论文，系统回顾了以BERT、GPT、RoBERTa为代表的Transformer架构在自然语言处理领域的发展历程、核心原理和未来前景。文章详细阐述了Transformer的核心创新——自注意力机制和位置编码，分析了预训练-微调范式如何革命性地改变了NLP任务处理方式。在架构层面，综述涵盖了编码器-解码器架构（T5）、仅编码器架构（BERT）和仅解码器架构（GPT）三大范式及其适用场景。在预训练技术方面，文章分析了掩码语言建模（MLM）、下一句预测（NSP）、自回归语言建模等目标函数的原理与比较。在适应方法层面，全面介绍了微调、提示调优、适配器等参数高效迁移学习技术。最后，文章总结了Transformer模型面临的挑战，包括计算资源需求、长上下文建模、可解释性等，并展望了多模态扩展、高效架构、绿色AI等未来发展方向。[citation:7]"
+  },
+  {
+    "title": "Titans: Towards a Neural Long-Term Memory Module for Transformers",
+    "keywords": [
+      "Long-term Memory",
+      "Test-time Training",
+      "Neural Memory Module",
+      "200M Context Window",
+      "Google Research"
+    ],
+    "year": "2025",
+    "summary": "本文由Transformer原始提出者谷歌团队完成，提出了一种名为Titans的新型架构，通过在Transformer中引入神经长期记忆模块，将上下文窗口扩展至200万token。与传统RNN的固定向量/矩阵记忆不同，Titans的记忆模块本质上是一个在测试时动态更新权重的多层感知机（MLP），打破了训练后权重固定的常规范式。架构的核心创新是MAC（Memory as Context）变体，它将长期记忆作为额外上下文信息输入注意力机制，与当前短期输入协同处理。该记忆模块通过量化的意外度指标（surprise metric）来决定何时更新：当检测到新输入与记忆状态之间存在显著差异时（高意外度），模型会优先将重要或异常信息存入长期记忆。实验表明，Titans在200万上下文长度的大海捞针测试中保持高准确率，性能超越Mamba-2等最先进线性循环模型。这项工作将Transformer从单纯的序列处理器进化为具备持续学习能力的代理模型。[citation:8]"
+  },
+  {
+    "title": "MIRAS: A Unified Framework for Test-Time Learning in Sequence Models",
+    "keywords": [
+      "Test-time Learning",
+      "Sequence Modeling",
+      "Non-Euclidean Objectives",
+      "MIRAS Framework",
+      "NeurIPS 2025"
+    ],
+    "year": "2025",
+    "summary": "作为Titans的理论框架，MIRAS提出了一个统一视角：将RNN、SSM和Transformer等不同序列架构视为解决同一根本问题（高效地将新旧信息相结合且不遗漏关键概念）的不同实例。论文将任意序列模型解构为四个核心设计选择：内存架构（存储信息的数学结构）、注意力偏差（模型优化的内在目标）、保留门控（平衡学习与记忆的遗忘机制），以及记忆算法（更新状态的优化方法）。MIRAS的关键创新在于引入非欧几里得目标函数，使模型能够采用更复杂的数学惩罚机制（如Huber Loss、广义范数和概率图约束）。基于该框架，论文构建了三个具体模型：YAAD（对异常值鲁棒性更强）、MONETA（通过更严格规则提升记忆稳定性）以及MEMORA（确保信息整合受控平衡）。实验结果表明，MIRAS框架指导的模型在性能和效率上均超越了Mamba-2等基线。[citation:8]"
+  },
+  {
+    "title": "Enhancing Transformers Through Conditioned Embedded Tokens",
+    "keywords": [
+      "Transformer Optimization",
+      "Attention Conditioning",
+      "Embedding Transformation",
+      "Training Stability",
+      "ICCV 2025"
+    ],
+    "year": "2025",
+    "summary": "本文揭示了Transformer注意力模块存在固有的病态性（ill-conditioning），这种现象会阻碍基于梯度的优化过程并导致训练效率低下。通过建立严格的理论框架，作者证明了注意力模块的条件数与嵌入后标记化数据的条件数之间存在直接的数学关系。基于这一理论洞察，论文提出了条件化嵌入标记方法：通过系统地修改输入嵌入表示来改善注意力机制的矩阵条件数，从而显著缓解病态性问题。理论分析表明，该方法能够使梯度流更加稳定，特征空间分布的曲率更加均匀。在多个视觉和语言任务（图像分类、目标检测、实例分割、自然语言处理）上的实验验证，该方法在不同Transformer架构上持续取得了性能提升，展现出广泛的适用性和有效性。[citation:9]"
+  },
+  {
+    "title": "Transformer and Its Application and Advances in Text Generation",
+    "keywords": [
+      "Transformer",
+      "Text Generation",
+      "Multimodal Generation",
+      "BioGPT",
+      "LLM"
+    ],
+    "year": "2025",
+    "summary": "本文综述了Transformer模型在文本生成领域的应用与最新进展，从三个维度展开论述。首先，介绍了多模态和句法控制的文本生成方法，包括VCT（通过集成视觉信息和共识知识）和语法引导模型GuiG，两者分别通过跨模态交互和动态注意力机制提升语义与句法质量。其次，对BART、T5、PEGASUS等大型语言模型在自动摘要任务中的表现进行了比较分析，验证了Transformer在处理长期依赖和一致性方面的优势。第三，深入分析了领域特定应用：生物医学文本生成模型（BioGPT）通过领域适应提高了生成准确率，而任务导向对话系统（MegaT）通过混合架构优化了实用性。针对生成内容的安全挑战，论文介绍了一种结合双向LSTM和注意力机制的混合检测框架，能够实现AI生成文本的高精度分类。文章系统梳理了Transformer文本生成技术的演进路径与边界，为细化领域设计、应对生成内容安全风险提供了参考。[citation:10]"
+  },
+  {
+    "title": "AFC-RNN: Adaptive Forgetting-Controlled Recurrent Neural Network for Pedestrian Trajectory Prediction",
+    "keywords": [
+      "Adaptive Forgetting Control",
+      "Pedestrian Trajectory Prediction",
+      "Self-Attention",
+      "Temporal Modeling",
+      "TPAMI 2025"
+    ],
+    "year": "2025",
+    "summary": "本文提出了一种新颖的自适应遗忘控制循环神经网络（AFC-RNN），专门解决行人轨迹预测中历史轨迹建模的遗忘特性问题。现有RNN方法忽略了行人对历史信息的自然遗忘特征，导致模型可能关注错误的历史位置信息。AFC-RNN的核心创新是自适应遗忘控制器（AFC），该控制器首先利用自注意力机制基于观测轨迹的时间相关性为每个时间步学习记忆因子，然后将这些记忆因子应用于RNN，显式且自适应地调节每个时间步观测特征的遗忘程度。在ETH、UCY、SDD和NBA四个公开数据集上的大量实验和消融研究表明，该方法显著优于现有最先进方法。此外，论文还提供了数学分析，从理论上证明了AFC-RNN的自适应遗忘策略在轨迹遗忘建模方面相比传统RNNs的优越性。[citation:2]"
+  },
+  {
+    "title": "Wavelet-RNN: A randomized neural network with wavelet-transform-based feature extension",
+    "keywords": [
+      "Randomized Neural Network",
+      "Wavelet Transformation",
+      "Multi-scale Feature Extraction",
+      "RVFL",
+      "Neurocomputing 2025"
+    ],
+    "year": "2025",
+    "summary": "本文针对随机向量功能链接（RVFL）网络在捕获局部化和多尺度特征方面的局限性，提出了一种新型的小波变换RVFL网络（Wavelet-RNN）。传统RVFL网络依赖于随机特征映射，往往难以有效建模复杂数据模式中的细微结构。该方法创新性地将小波分解集成到RVFL框架中，通过提取输入矩阵每个特征的逼近系数和细节系数，同时捕获空间域和频域信息。在UCI知识库的20个二分类和20个多分类真实数据集上的大量实证研究表明，Wavelet-RNN在泛化能力和鲁棒性方面均显著优于标准RVFL及最先进的RNN变体，展示了在多尺度结构表示和局部模式捕获方面的优越性。[citation:1]"
+  },
+  {
+    "title": "Bringing RNNs Back to Efficient Open-Ended Video Understanding",
+    "keywords": [
+      "Linear RNN",
+      "Video Understanding",
+      "Multimodal LLM",
+      "Efficient Architecture",
+      "ICCV 2025"
+    ],
+    "year": "2025",
+    "summary": "本文提出了AuroraLong模型，旨在解决长视频理解中Transformer架构计算复杂度高和内存成本大的核心挑战。由于Transformer-based LLM的内存和计算需求与输入序列长度呈平方级增长，该方法创新性地使用线性RNN语言模型替代多模态大语言模型（MLLM）中的LLM组件，该RNN能够以恒定大小的隐藏状态处理任意长度的输入序列。为进一步提升吞吐量和效率，研究进一步将视觉token合并技术与线性RNN模型相结合，通过按尺寸升序重排视觉token来优化处理顺序。尽管仅有20亿参数且完全使用公开数据训练，AuroraLong在多项视频基准测试中取得了与使用私有数据训练的类似规模Transformer模型相当的性能，展示了线性RNN在降低长视频理解计算门槛方面的巨大潜力。[citation:6]"
+  },
+  {
+    "title": "Constructing biologically constrained RNNs via Dale's backpropagation and topologically informed pruning",
+    "keywords": [
+      "Biologically Constrained RNN",
+      "Dale's Law",
+      "Sparse Connectivity",
+      "Cortical Modeling",
+      "Science Advances 2025"
+    ],
+    "year": "2025",
+    "summary": "本文针对传统RNN在皮层功能建模中缺乏生理和解剖保真度的问题，开发了一套数学严谨的方法，将戴尔定律（Dale's law）与高度稀疏的连接模式同时整合到RNN训练流程中。该方法使得受约束模型的性能在经验上与无约束训练的RNN相当。研究进一步展示了该方法在推断多区域交互方面的实用性：通过使用数据驱动的、细胞类型特异性的连接约束训练RNN模型，重建了小鼠视觉行为期间跨多个皮层层次和脑区的双光子钙成像数据。模型推断的交互在长和短时间尺度上均与预测编码理论的实验发现一致，验证了该方法在神经科学计算建模中的价值。[citation:3]"
+  },
+  {
+    "title": "Multiplicative couplings facilitate rapid learning and information gating in recurrent neural networks",
+    "keywords": [
+      "Multiplicative Gating",
+      "Thalamocortical Modeling",
+      "Hebbian Plasticity",
+      "Context-Dependent Learning",
+      "bioRxiv 2025"
+    ],
+    "year": "2025",
+    "summary": "受哺乳动物前脑中丘脑-皮层回路架构的启发，本文提出了一种RNN与前馈神经网络（FNN）之间的乘性耦合机制。该乘性交互通过施加赫布权重放大到突触-神经元耦合上，实现上下文依赖的门控和快速切换。实验证明，这种乘性反馈驱动的突触可塑性在监督学习、强化学习和无监督学习场景中实现了2到100倍的速度提升，同时增强了RNN的记忆容量、模型鲁棒性和泛化能力。研究进一步通过多个多区域回路模型验证了该方法的有效性和生物学合理性，包括用于上下文依赖决策的前额叶皮层-丘脑背内侧核网络、用于工作记忆和注意力的皮层-丘脑-皮层网络，以及用于视觉空间导航和序列重放的内嗅皮层-海马网络。[citation:8]"
+  },
+  {
+    "title": "The Emergence of Chunking Structures with Hierarchical RNN",
+    "keywords": [
+      "Hierarchical RNN",
+      "Unsupervised Chunking",
+      "Syntactic Structure Discovery",
+      "Computational Linguistics",
+      "MIT Press 2025"
+    ],
+    "year": "2025",
+    "abstract": "本文提出了一种无监督的组块分析方法，用于自然语言处理中的句法结构预测。研究设计了一个分层循环神经网络（HRNN），专门用于建模词到组块和组块到句子的组合过程。该方法采用两阶段训练：首先使用无监督解析器进行预训练，然后在下游NLP任务上进行微调。在多个数据集上的实验揭示了预训练和微调阶段无监督组块性能的显著提升。有趣的是，研究发现组块结构的涌现是神经模型在下游任务训练过程中的暂时性现象。这项研究为无监督句法结构发现提供了新的视角，并为语言学理论的进一步研究开辟了途径。[citation:4]"
+  },
+  {
+    "title": "Detecting Invariant Manifolds in ReLU-Based RNNs",
+    "keywords": [
+      "Dynamical Systems",
+      "Invariant Manifold Detection",
+      "ReLU Activation",
+      "Chaos Detection",
+      "arXiv 2025"
+    ],
+    "year": "2025",
+    "summary": "本文针对基于ReLU激活函数的分段线性RNN（PLRNN），提出了一种新颖的不变流形检测算法。周期点的稳定流形和不稳定流形在动力系统状态空间的划分中起着关键作用：它们将系统划分为不同的吸引盆，其交集导致具有分形几何的混沌动力学。该算法可用于追踪不同吸引盆之间的边界，从而表征多稳态这一计算上的重要特性。研究进一步展示了该算法在寻找同宿点（稳定流形与不稳定流形的交点）方面的实用性，从而建立了PLRNN中存在混沌的理论依据。最后，论文通过皮层神经元的电生理记录实证例子，展示了该方法如何帮助理解底层动力学特性。[citation:5]"
+  },
+  {
+    "title": "RAMba: Hardware-aligned Hierarchical Sparse Attention for Efficient Long-term Memory Access",
+    "keywords": [
+      "RNN-Attention Hybrid",
+      "Hierarchical Sparse Attention",
+      "Long Context Modeling",
+      "Mamba",
+      "NeurIPS 2025"
+    ],
+    "year": "2025",
+    "summary": "本文指出RNN相比Transformer的核心优势在于线性的计算和空间复杂度，使其在长序列处理中训练和推理更快。然而，RNN的根本局限在于无法随机访问历史上下文，而简单地集成注意力机制可能削弱其效率优势。为此，本文提出了分层稀疏注意力（HSA）机制，通过将输入分块、选择top-k块并分层聚合信息，在保持RNN效率和长度泛化优势的同时增强长程随机访问灵活性。核心创新在于基于每个块内的细粒度token级信息来学习token到块的相关性，提升了域内和域外上下文长度下的块选择精度。将HSA与Mamba结合提出的RAMba模型，仅在4K长度上下文上预训练，却在6400万上下文的密钥检索任务上达到完美准确率，同时在多项下游任务上取得显著提升且内存占用近乎恒定。[citation:10]"
+  },
+  {
+    "title": "Paying the Price for Reach: Size-Dependent Emergence of Efficient Wiring in Cognitive Recurrent Neural Networks",
+    "keywords": [
+      "Biologically Inspired RNN",
+      "Wiring Cost Optimization",
+      "Network Sparsity",
+      "Modularity",
+      "ALIFE 2025"
+    ],
+    "year": "2025",
+    "abstract": "本研究探讨了将生物启发的布线性约束融入RNN学习过程对网络结构和功能的影响。通过在執行需要短时和长时记忆及决策的季节性觅食任务的RNN上，系统性地改变网络规模（N）和基于通信加权的空间正则化惩罚强度（λ），研究发现：虽然所有网络都达到了高任务精度，但较大网络（N≥100）对更高惩罚强度（λ）表现出与较小网络（N=50）不同的敏感性模式。增加λ诱导产生了与生物大脑相似的神经网络拓扑结构，包括稀疏性、更短的连接长度（同时保留关键的长程连接）、更高的模块化程度和增强的小世界特性。研究识别出一个规模依赖的最优λ区间[0.05, 0.10]，在该区间内网络能产生高效的大脑样结构特性而不损害功能性能。[citation:9]"
+  },
+  {
+    "title": "ImRA_SRNet: Improved Residual Attention-based Simple Recurrent Neural Network-based Autism Detection Using Eye Tracking",
+    "keywords": [
+      "Simple RNN",
+      "Residual Attention",
+      "Autism Detection",
+      "Eye Tracking",
+      "Medical AI 2025"
+    ],
+    "year": "2025",
+    "abstract": "本文提出了一种基于眼动追踪的深度学习自闭症检测新方法。该方法首先使用对比度受限自适应直方图均衡化对输入数据进行预处理以增强图像质量，然后采用图像增强技术扩展数据集。核心检测模型是改进的残差注意力简单循环神经网络（ImRA_SRNet），该模型结合了卷积层、残差单元和简单循环单元，用于同时提取输入图像中的空间和时空特征。为优化模型性能，研究设计了增强型河马优化算法（EHiO），通过整合切比雪夫映射解决局部最优解问题并加速收敛，用于训练过程中损失函数的优化。实验结果显示，该方法在准确率、特异度、精确率、召回率和F1分数上分别达到98.51%、98.25%、97.32%、98.02%和97.97%。[citation:7]"
+  },
+  {
+    "title": "Native Sparse Attention: Hardware-Aligned and Natively Trainable Sparse Attention",
+    "keywords": [
+      "Sparse Attention",
+      "Long Context Modeling",
+      "Hardware Alignment",
+      "Efficient Training",
+      "ACL 2025 Best Paper"
+    ],
+    "year": "2025",
+    "summary": "本文由北京大学张铭教授团队与DeepSeek梁文锋团队合作完成，荣获ACL 2025最佳论文奖，针对长上下文大语言模型建模中标准注意力机制计算开销过高的核心挑战，提出了原生可训练稀疏注意力机制Native Sparse Attention（NSA）。该方法的创新体现在两个层面：一是硬件对齐的算法与实现，通过算术强度均衡设计和专用算子将稀疏注意力的理论优势转化为实际加速；二是原生可训练性，实现了端到端训练模式，解决了稀疏注意力难以训练的历史难题。在64k序列长度下，NSA相比FlashAttention在前向传播速度上提升可达9倍，反向传播实现6倍加速，呈现出“序列越长加速越优”的特性。实验表明，基于NSA预训练的模型在通用基准、长上下文及指令推理任务上均能保持甚至超越传统注意力模型的表现，该技术已被DeepSeek、华为、字节跳动等多家企业实现或复现。[citation:2]"
+  },
+  {
+    "title": "When Less Language is More: Language-Reasoning Disentanglement Makes LLMs Better Multilingual Reasoners",
+    "keywords": [
+      "Multilingual Reasoning",
+      "Language-Reasoning Disentanglement",
+      "Causal Intervention",
+      "Cross-lingual Generalization",
+      "NeurIPS 2025"
+    ],
+    "year": "2025",
+    "summary": "本文受认知神经科学启发——人类推理功能在很大程度上独立于语言处理——提出假设：大语言模型同样将推理和语言编码为可分离的组件，通过解耦可增强多语言推理能力。研究团队在10个开源权重LLM和11种类型多样的语言上进行了因果干预实验，通过在推理时消除语言特定的表示，持续提升了多语言推理性能。分层分析进一步证实，语言和推理表示可以在模型各层被有效解耦，同时保留顶层语言特征以维持语言保真度。与需要监督微调或强化学习的后训练方法相比，这种无需训练的语言-推理解耦方法以最小的计算开销取得了可比较甚至更优的结果。论文已被NeurIPS 2025接收。[citation:3]"
+  },
+  {
+    "title": "Pretraining Language Models for Diachronic Linguistic Change Discovery",
+    "keywords": [
+      "Diachronic Linguistics",
+      "Scientific Discovery",
+      "Domain-Restricted Pretraining",
+      "Historical Linguistics",
+      "ACL 2025 Findings"
+    ],
+    "year": "2025",
+    "summary": "本文探索了大语言模型作为历史语言学和文学研究等人类学学科科学发现工具的潜力。研究指出，虽然通过微调或模型编辑可以限制推理到特定领域，但唯一真正的保障是领域受限的预训练——这通常是数据密集和计算昂贵的选择。为此，研究团队展示了一种高效预训练技术，能够在那些过大无法手动检查但过小不适合“典型”LLM方法的语料上产生有效模型。论文采用了一种新颖的日期归属pipeline，获取了一个包含五个1000万词时间切片的数据集，训练了两组相应的五模型电池（高效预训练和Llama3-8B参数高效微调）。实验表明，预训练模型比微调基线训练更快，且更能尊重语料的历史划分。该方法能够检测多种语言变化现象，包括大规模词汇变化、非词汇（语法和形态）变化以及词义引入/过时，并为其他目标领域的扩展提供了即用型pipeline。[citation:1]"
+  },
+  {
+    "title": "Diffusion Language Models are Super Data Learners",
+    "keywords": [
+      "Diffusion Language Model",
+      "Autoregressive Model",
+      "Data Efficiency",
+      "Any-order Modeling",
+      "ICLR 2025"
+    ],
+    "year": "2025",
+    "summary": "本文在严格受控的预训练设置下观察到一个关键的“交叉现象”：当独特数据受限时，扩散语言模型通过更多轮次的训练持续超越自回归模型。该交叉点随数据量和质量的增加而后移，随模型规模增大而前移，并在稠密和稀疏架构中保持一致。研究将这种增益归因于三个叠加因素：任意顺序建模能力、迭代双向去噪带来的超密集计算，以及内置的蒙特卡洛数据增强。实验显示，在约1.5万亿token计算预算下训练的1.7B参数DLM，在10B独特Python token上超越了严格匹配设置训练的自回归编码器。此外，一个1B参数的DLM仅使用10亿token（通过重复数据）即在HellaSwag上达到超过56%的准确率，在MMLU上达到超过33%，展示了扩散语言模型在数据效率方面的显著优势。[citation:8]"
+  },
+  {
+    "title": "LOST: Low-rank and Sparse Pre-training for Large Language Models",
+    "keywords": [
+      "Low-rank Pre-training",
+      "Sparse Training",
+      "Model Compression",
+      "Memory Efficiency",
+      "ICML 2025"
+    ],
+    "year": "2025",
+    "summary": "针对大语言模型从零开始预训练所带来的巨大计算和内存成本，本文提出了一种名为LOST的低秩与稀疏预训练方法。该方法创新性地将低秩和稀疏结构进行融合：对权重矩阵应用奇异值分解，保留主导的低秩分量，同时将剩余奇异值分配用于构建通道级的稀疏分量，以补全低秩训练的表示能力。这种设计克服了现有方法简单或临时组合低秩与稀疏组件所导致的性能下降问题。研究团队在从6000万到70亿参数的LLM预训练上评估了LOST，实验表明该方法能够达到与全秩模型竞争或更优的性能，同时显著降低内存和计算开销，代码已开源。[citation:5]"
+  },
+  {
+    "title": "From Serving to Training: Efficient Systems for LLM Agents at Scale",
+    "keywords": [
+      "LLM Agent",
+      "Reinforcement Learning",
+      "Application-aware Serving",
+      "Model Routing",
+      "UCB PhD Dissertation 2025"
+    ],
+    "year": "2025",
+    "summary": "本文是加州大学伯克利分校的博士论文，系统性地设计了面向LLM Agent的大规模高效系统。论文分为两大层面：首先是应用感知的基础设施优化，提出了Agentix——一个引入应用感知调度的服务引擎，通过跟踪LLM调用间的依赖关系并利用应用级统计信息，相比vLLM等最先进系统将端到端响应时间提升了4-15倍；其次是基于强化学习的模型-应用耦合，通过Agentica项目证明使用应用特定RL训练的小模型可以媲美前沿模型。具体成果包括：DeepScaleR是一个1.5B模型，在数学推理上超越o1-preview，相比先前方法实现了18倍的成本降低；DeepCoder在竞争性编程上达到o3-mini级别性能；DeepSWE训练了一个32B的自主编码Agent，领先所有开源Agent超过12个百分点。[citation:6]"
+  },
+  {
+    "title": "Structured Definitions and Segmentations for Legal Reasoning in LLMs: A Study on Indian Legal Data",
+    "keywords": [
+      "Legal Reasoning",
+      "Zero-shot Learning",
+      "Document Segmentation",
+      "Domain Adaptation",
+      "BDA 2025"
+    ],
+    "year": "2025",
+    "summary": "本文针对大语言模型在法律专业领域表现不佳的问题——主要由于缺乏领域特定的预训练以及法律文档长而复杂的特性——提出了三个研究方向：首先，根据修辞角色重组文档以评估结构化信息如何影响长上下文处理和模型决策；其次，定义修辞角色以使模型熟悉法律术语；第三，模拟法院关于修辞角色的逐步推理过程以增强模型推理能力。实验在三个印度法律判决预测数据集上进行零样本设置，结果表明，组织数据或解释关键法律术语显著提升了模型性能，相比基线在F1分数上实现了最小约1.5%、最大4.36%的提升。论文被BDA 2025接收。[citation:4]"
+  },
+  {
+    "title": "A Simple yet Effective Layout Token in Large Language Models for Document Understanding",
+    "keywords": [
+      "Document Understanding",
+      "Layout Token",
+      "Positional Encoding",
+      "Multimodal LLM",
+      "CVPR 2025"
+    ],
+    "year": "2025",
+    "summary": "本文针对大语言模型文档理解中布局信息的整合问题，指出现有方法将布局信息表示为文本token并与文本内容交错输入，但这种方法需要额外的位置ID，受到最大位置ID限制，会减少文本内容的可用ID并降低模型从文本中学习的能力。为此，论文提出LayTokenLLM，一个简单而有效的文档理解方法，将布局信息表示为每个文本段的单个token，并使用专门的位置编码方案，在文本和布局token之间共享位置ID，无需额外位置ID。这种设计在保持从文本学习能力的同时缓解了长上下文推理问题。此外，论文设计了新颖的预训练目标——交错文本布局token预测，以增强文本和布局token之间的跨模态学习。大量实验表明，LayTokenLLM在多页文档理解任务上超越了现有整合布局的LLM和多模态LLM。[citation:7]"
+  },
+  {
+    "title": "Exploring Graph Representations of Logical Forms for Language Modeling",
+    "keywords": [
+      "Logical Form Language Model",
+      "Graph Representation",
+      "Data Efficiency",
+      "Distributional Semantics",
+      "ACL 2025 Findings"
+    ],
+    "year": "2025",
+    "summary": "本文提出使用逻辑形式上的语言模型，论证这类模型比纯文本模型更具数据效率。研究介绍了基于图的形式逻辑分布语义原型GFoLDS，这是一个在图表示的逻辑形式上预训练的语言模型，作为逻辑形式语言模型的概念验证。实验提供了强有力的证据，表明GFoLDS可以利用这类模型内置的基础语言学知识，立即开始学习更复杂的模式。在下游任务上，GFoLDS大幅优于在相似数据量上预训练的纯文本Transformer LM，表明逻辑形式语言模型可以用显著少于纯文本模型的数据进行有效学习。此外，性能很可能随参数和预训练数据的增加而扩展，这证明了LFLM在实际应用中的可行性。论文被ACL 2025 Findings收录。[citation:10]"
+  },
+  {
+    "title": "vLLM: An Efficient Inference Engine for Large Language Models",
+    "keywords": [
+      "LLM Inference",
+      "PagedAttention",
+      "Memory Management",
+      "High-throughput Serving",
+      "UCB Technical Report 2025"
+    ],
+    "year": "2025",
+    "summary": "本文是加州大学伯克利分校的技术报告，系统介绍了vLLM的设计与实现——一个高效灵活的LLM推理引擎，目前已成为学术界和工业界最广泛使用的LLM推理框架之一。论文的核心贡献是PagedAttention，一种革命性的内存管理算法，通过将注意力键值缓存分页管理，显著提升了LLM推理的吞吐量。报告详细阐述了vLLM的系统设计，包括调度机制、可扩展架构以及关键性能优化。vLLM通过利用操作系统的虚拟内存分页思想解决了LLM推理中KV缓存的内存碎片和利用率低下问题，使得相同硬件条件下可服务的用户数提升数倍。这项工作展示了如何通过原则性的系统设计弥合现代LLM快速发展与大规模实际部署之间的差距。[citation:9]"
+  },
+  {
+    "title": "A2FM: An Adaptive Agent Foundation Model for Tool-Aware Hybrid Reasoning",
+    "keywords": [
+      "Agent Foundation Model",
+      "Tool-Aware Reasoning",
+      "Adaptive Policy Optimization",
+      "Routing Mechanism"
+    ],
+    "year": "2025",
+    "summary": "本文针对大语言模型在推理中心型（擅长内部思维链推理但不支持工具调用）与代理型（擅长环境交互和工具使用但深度推理不足）之间的能力分裂问题，提出了一种统一的适应性代理基础模型A2FM。该模型遵循route-then-align原则，在单一骨干网络下集成了三种互补模式：agentic模式（工具感知行动）、reasoning模式（显式思维链）和instant模式（直接回答简单查询）。为解决简单查询上的过度思考或过度调用工具的效率问题，A2FM引入第三种模式处理简单查询，并提出适应性策略优化APO，通过跨模式的自适应采样和成本正则化奖励来联合优化准确性和效率。在32B参数量级上，A2FM在BrowseComp上达到13.4%、AIME25上达到70.4%、HLE上达到16.7%，在代理、推理和通用基准上均达到同类模型的最优水平。特别值得注意的是，其适应性执行的单答案成本仅为0.00487美元，相比纯推理模式降低45.2%，相比纯代理模式降低33.5%。"
+  },
+  {
+    "title": "Collaborative Tree Search for Enhancing Embodied Multi-Agent Collaboration",
+    "keywords": [
+      "Multi-Agent Collaboration",
+      "Embodied Agent",
+      "Monte Carlo Tree Search",
+      "LLM Planning",
+      "CVPR 2025"
+    ],
+    "year": "2025",
+    "summary": "本文针对基于大语言模型的具身智能体在多智能体协作任务中面临的核心挑战——简单通信模式会导致智能体动作出现错误或不一致，带来额外风险——提出了一种协作树搜索框架CoTS。该框架通过引导多智能体在改进的蒙特卡洛树中进行长期战略规划讨论，并沿LLM驱动的奖励函数进行搜索，为协作提供了更周全和更有前景的途径。CoTS的另一关键创新是引入了计划评估模块，该模块不仅防止频繁计划更新导致的智能体动作混乱，还能在当前计划变得不合适时及时确保计划更新。在CWAH和TDW-MAT两个具身环境上的实验结果表明，CoTS在规划、通信和协作方面表现出色，能够高效完成长期复杂任务，显著超越现有方法。"
+  },
+  {
+    "title": "An Information Theoretic Perspective on Agentic System Design",
+    "keywords": [
+      "Agentic System",
+      "Compressor-Predictor Architecture",
+      "Mutual Information",
+      "Cost-Efficiency",
+      "Deep Research"
+    ],
+    "year": "2025",
+    "summary": "本文从信息论视角重新审视了代理系统的设计问题，揭示了现代代理应用中普遍存在的“压缩器-预测器”双模型架构——较小的压缩器LM将原始上下文提炼为紧凑文本，供较大的预测器LM消费。尽管这种架构广泛流行，其设计选择（如压缩器和预测器的大小配置）与下游性能之间的关系缺乏理论指导。本文创新性地将压缩器LM视为噪声信道，引入互信息估计器来量化压缩质量，发现互信息能在无需具体任务的情况下强有力地预测下游性能。实验表明，更大的压缩器不仅更准确（7B相比1.5B准确率提升1.6倍），而且更简洁（4.6倍），每token传达的互信息量增加5.5倍。跨数据集的系统分析显示，扩展压缩器规模比扩展预测器规模有效得多。应用这些原则到Deep Research系统，仅用3B参数的本地压缩器就能以26%的API成本恢复前沿LLM 99%的准确率。"
+  },
+  {
+    "title": "Symbiotic Agents: A Novel Paradigm for Trustworthy AGI-Driven Networks",
+    "keywords": [
+      "Symbiotic Agent",
+      "LLM-Optimizer Hybrid",
+      "Trustworthy AI",
+      "6G Networks",
+      "O-RAN"
+    ],
+    "year": "2025",
+    "summary": "本文针对纯LLM代理在实时网络控制中缺乏形式化安全保证和确定性误差边界的问题，提出了共生代理这一新型代理范式。该架构将LLM与实时优化算法配对：输入侧优化器为数值精确任务提供有界不确定性引导，输出侧优化器在LLM监督下实现适应性实时控制。具体设计了两种代理类型：RAN优化器（用于动态RAN控制，LLM解释高层级意图并持续调整控制器参数）和多智能体SLA协商器（用于多租户服务级协议协商）。在真实5G测试平台上的实验表明，共生代理相比纯LLM代理将决策错误率降低5倍，而小型语言模型在保持相近准确率的同时，GPU资源开销降低99.9%，近实时循环控制在82ms内完成。多代理协同RAN演示显示，SLA和资源分配的灵活性显著提升，RAN过度利用率降低约44%，为向AGI驱动网络的过渡提供了可信架构。"
+  },
+  {
+    "title": "Multi-Agent Systems for Robotic Autonomy with LLMs",
+    "keywords": [
+      "Multi-Agent System",
+      "Robotic Autonomy",
+      "LLM",
+      "Task Analysis",
+      "CVPR Workshop 2025"
+    ],
+    "year": "2025",
+    "summary": "本文利用大语言模型构建面向机器人自主性的多智能体框架，用于机器人任务分析、机械设计和路径生成的集成系统。该框架包含三个核心代理：Task Analyst（负责理解任务需求，将其分解为可执行的子任务）、Robot Designer（执行机械设计，输出机器人结构方案）和Reinforcement Learning Designer（生成控制策略）。系统输出为多模态结果，包括代码文件和技术报告，以增强可理解性和可用性。为评估通用性，研究者使用GPT和DeepSeek两个模型家族的多个模型进行了对比实验。结果表明，给定适当的任务输入时，该系统能够设计出具备可行控制策略的机器人，展现了在研究和工业应用中提升机器人系统开发效率和可及性的巨大潜力。"
+  },
+  {
+    "title": "Endowing GPT-4 with a Humanoid Body: Building the Bridge Between Off-the-Shelf VLMs and the Physical World",
+    "keywords": [
+      "Embodied Agent",
+      "Vision-Language Model",
+      "Humanoid Robot",
+      "Motion Generation",
+      "Physical Interaction"
+    ],
+    "year": "2025",
+    "summary": "本文探索了一条不同于大规模数据训练的替代路径：让现成的视觉语言模型（如GPT-4）控制类人智能体，利用其强大的开放世界泛化能力来减少对海量数据收集的需求。为此提出的BiBo框架包含两个关键组件：一是具身指令编译器，使VLM能够感知环境并将高层级用户指令（如“休息一下”）精确翻译为带有控制参数的低层级原始指令（如“随意坐下，位置：(1,2)，面向：90°”）；二是基于扩散的运动执行器，从这些指令生成类人动作，同时动态适应来自环境的物理反馈。实验表明，BiBo在开放环境中的交互任务成功率达到90.2%，在文本引导的运动执行精度上比前人方法提升16.3%。"
+  }
+]
