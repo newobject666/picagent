@@ -13,9 +13,9 @@ from figure_agent.agent.dynamic_planner import (
     AgentStepResult,
     AgentToolSpec,
     DynamicAgentPlanner,
-    DynamicPlan,
     DynamicPlanStep,
 )
+from figure_agent.agent.runner import AgentExecutor, AgentPlan
 from figure_agent.agent.mcp_tools import MCPToolRegistry
 from figure_agent.agent.hooks import HookContext, HookEvent, HookManager, HookRunResult
 from figure_agent.rag.paper_retriever import PaperRAGRetriever, RagRetrievalResult
@@ -23,29 +23,6 @@ from pathlib import Path
 import logging
 
 logger = logging.getLogger("picagent")
-
-
-@dataclass
-class AgentPlan:
-    user_input: str
-    skill_names: List[str]
-    use_rag: bool
-    steps: List[str]
-    dynamic_plan: Optional[DynamicPlan] = None
-
-
-@dataclass
-class AgentExecutionTrace:
-    results: List[AgentStepResult]
-    rag_result: Optional[RagRetrievalResult] = None
-    rag_messages: List[Dict[str, str]] = None
-    skill_messages: List[Dict[str, str]] = None
-    user_updates: List[str] = None
-
-    def __post_init__(self) -> None:
-        self.rag_messages = self.rag_messages or []
-        self.skill_messages = self.skill_messages or []
-        self.user_updates = self.user_updates or []
 
 
 @dataclass
@@ -128,6 +105,7 @@ class ResearchAgent:
             auto_reload_json=False,
         )
 
+        self.executor = AgentExecutor(self)
         self.max_tokens = max_tokens
 
     def ask_stream(self, user_input: str) -> Iterator[str]:
@@ -210,7 +188,7 @@ class ResearchAgent:
 
         # 3. 按计划构造 skill messages
         # 注意：build_skill_messages 内部会读取对应 skill.md
-        execution_trace = self._execute_dynamic_plan(
+        execution_trace = self.executor.execute(
             user_input=user_input,
             plan=plan,
             skill_names=skill_names,
@@ -698,341 +676,6 @@ class ResearchAgent:
         ]
         tools.extend(self.mcp_tools.list_tool_specs())
         return tools
-
-    def _execute_direct_path(
-        self,
-        user_input: str,
-        plan: AgentPlan,
-        skill_names: List[str],
-        use_rag: bool,
-    ) -> AgentExecutionTrace:
-        trace = AgentExecutionTrace(results=[])
-
-        if skill_names:
-            trace.skill_messages = self.skill_loader.build_skill_messages(user_input)
-            trace.results.append(
-                AgentStepResult(
-                    step_id="direct_skill",
-                    goal="加载匹配 skill",
-                    tool="skill_lookup",
-                    query=",".join(skill_names),
-                    status="PASS",
-                    observation=f"加载技能: {', '.join(skill_names)}",
-                )
-            )
-
-        if use_rag:
-            before_rag_result = self.hooks.run(
-                HookContext(
-                    event=HookEvent.BEFORE_RAG,
-                    user_input=user_input,
-                    plan=plan,
-                    skill_names=skill_names,
-                )
-            )
-            if not before_rag_result.allowed:
-                trace.results.append(
-                    AgentStepResult(
-                        step_id="direct_rag",
-                        goal="直接 RAG 检索",
-                        tool="rag_search",
-                        query=user_input,
-                        status="BLOCKED",
-                        observation=self._build_hook_refusal(before_rag_result),
-                    )
-                )
-                return trace
-
-            rag_result = self.paper_rag.retrieve_with_guardrails(query=user_input)
-            trace.rag_result = rag_result
-            after_rag_result = self.hooks.run(
-                HookContext(
-                    event=HookEvent.AFTER_RAG,
-                    user_input=user_input,
-                    plan=plan,
-                    skill_names=skill_names,
-                    rag_result=rag_result,
-                )
-            )
-            if not after_rag_result.allowed:
-                trace.results.append(
-                    AgentStepResult(
-                        step_id="direct_rag",
-                        goal="直接 RAG 检索",
-                        tool="rag_search",
-                        query=user_input,
-                        status="BLOCKED",
-                        observation=self._build_hook_refusal(after_rag_result),
-                        evidence_status=rag_result.status,
-                    )
-                )
-                return trace
-
-            if rag_result.context_message:
-                trace.rag_messages = [rag_result.context_message]
-
-            trace.results.append(
-                AgentStepResult(
-                    step_id="direct_rag",
-                    goal="直接 RAG 检索并校验证据",
-                    tool="rag_search",
-                    query=user_input,
-                    status=rag_result.status,
-                    observation=f"RAG evidence gate={rag_result.status}",
-                    evidence_status=rag_result.status,
-                )
-            )
-
-        return trace
-
-    def _execute_dynamic_plan(
-        self,
-        user_input: str,
-        plan: AgentPlan,
-        skill_names: List[str],
-    ) -> AgentExecutionTrace:
-        route_decision = getattr(self, "_last_route_decision", None)
-        if route_decision is not None and not route_decision.use_agent_chain:
-            return self._execute_direct_path(
-                user_input=user_input,
-                plan=plan,
-                skill_names=skill_names,
-                use_rag=plan.use_rag,
-            )
-
-        dynamic_plan = plan.dynamic_plan
-        if dynamic_plan is None:
-            dynamic_plan = self.dynamic_planner.generate_plan(
-                user_input=user_input,
-                skill_names=skill_names,
-                use_rag=plan.use_rag,
-                tools=self._available_agent_tools(),
-            )
-            plan.dynamic_plan = dynamic_plan
-
-        trace = AgentExecutionTrace(results=[])
-        tools = self._available_agent_tools()
-        step_index = 0
-        executed_count = 0
-
-        while step_index < len(dynamic_plan.steps) and executed_count < self.dynamic_planner.max_steps:
-            step = dynamic_plan.steps[step_index]
-            result = self._execute_dynamic_step(
-                step=step,
-                user_input=user_input,
-                plan=plan,
-                skill_names=skill_names,
-                trace=trace,
-            )
-            trace.results.append(result)
-            trace.user_updates.append(self._format_agent_step_update(result))
-            executed_count += 1
-
-            if step.tool == "final_report":
-                break
-
-            completed = dynamic_plan.steps[: step_index + 1]
-            remaining = dynamic_plan.steps[step_index + 1:]
-            revised_remaining = self.dynamic_planner.revise_plan(
-                user_input=user_input,
-                plan=dynamic_plan,
-                completed_results=trace.results,
-                remaining_steps=remaining,
-                tools=tools,
-            )
-            dynamic_plan.steps = completed + revised_remaining
-            plan.steps = [item.goal for item in dynamic_plan.steps]
-            step_index += 1
-
-        return trace
-
-    def _execute_dynamic_step(
-        self,
-        step: DynamicPlanStep,
-        user_input: str,
-        plan: AgentPlan,
-        skill_names: List[str],
-        trace: AgentExecutionTrace,
-    ) -> AgentStepResult:
-        query = step.query or user_input
-
-        if step.tool == "memory_search":
-            memories = self.auto_memory.search(query, limit=5)
-            observation = (
-                f"检索到 {len(memories)} 条长期记忆"
-                if memories
-                else "未检索到相关长期记忆"
-            )
-            return AgentStepResult(
-                step_id=step.id,
-                goal=step.goal,
-                tool=step.tool,
-                query=query,
-                status="PASS",
-                observation=observation,
-            )
-
-        if step.tool == "skill_lookup":
-            if not trace.skill_messages:
-                trace.skill_messages = self.skill_loader.build_skill_messages(user_input)
-            observation = (
-                f"加载技能: {', '.join(skill_names)}"
-                if skill_names
-                else "未命中特定 skill"
-            )
-            return AgentStepResult(
-                step_id=step.id,
-                goal=step.goal,
-                tool=step.tool,
-                query=query,
-                status="PASS",
-                observation=observation,
-            )
-
-        if step.tool == "document_context":
-            document_count = len(self.runtime_documents)
-            observation = (
-                f"已读取 {document_count} 个上传文档，解析文本将在最终生成前注入上下文"
-                if document_count
-                else "本轮没有上传文档"
-            )
-            return AgentStepResult(
-                step_id=step.id,
-                goal=step.goal,
-                tool=step.tool,
-                query=query,
-                status="PASS",
-                observation=observation,
-            )
-
-        if step.tool == "rag_search":
-            before_rag_result = self.hooks.run(
-                HookContext(
-                    event=HookEvent.BEFORE_RAG,
-                    user_input=user_input,
-                    plan=plan,
-                    skill_names=skill_names,
-                )
-            )
-            if not before_rag_result.allowed:
-                return AgentStepResult(
-                    step_id=step.id,
-                    goal=step.goal,
-                    tool=step.tool,
-                    query=query,
-                    status="BLOCKED",
-                    observation=self._build_hook_refusal(before_rag_result),
-                )
-
-            rag_result = self.paper_rag.retrieve_with_guardrails(query=query)
-            trace.rag_result = rag_result
-            after_rag_result = self.hooks.run(
-                HookContext(
-                    event=HookEvent.AFTER_RAG,
-                    user_input=user_input,
-                    plan=plan,
-                    skill_names=skill_names,
-                    rag_result=rag_result,
-                )
-            )
-            if not after_rag_result.allowed:
-                return AgentStepResult(
-                    step_id=step.id,
-                    goal=step.goal,
-                    tool=step.tool,
-                    query=query,
-                    status="BLOCKED",
-                    observation=self._build_hook_refusal(after_rag_result),
-                    evidence_status=rag_result.status,
-                )
-
-            if rag_result.context_message:
-                trace.rag_messages = [rag_result.context_message]
-
-            if rag_result.supplemental_queries:
-                observation = (
-                    "初始证据不足，已触发补充检索并完成融合重排；"
-                    f"最终状态={rag_result.status}"
-                )
-            else:
-                observation = (
-                    "完成意图识别、混合召回、融合重排和证据门控；"
-                    f"最终状态={rag_result.status}"
-                )
-
-            return AgentStepResult(
-                step_id=step.id,
-                goal=step.goal,
-                tool=step.tool,
-                query=query,
-                status=rag_result.status,
-                observation=observation,
-                evidence_status=rag_result.status,
-            )
-
-        if step.tool == "context_summary":
-            return AgentStepResult(
-                step_id=step.id,
-                goal=step.goal,
-                tool=step.tool,
-                query=query,
-                status="PASS",
-                observation="已整理当前对话、长期记忆、skill 和 RAG 候选上下文",
-            )
-
-        if step.tool == "final_report":
-            return AgentStepResult(
-                step_id=step.id,
-                goal=step.goal,
-                tool=step.tool,
-                query=query,
-                status="READY",
-                observation="进入最终生成阶段；生成前会再次执行证据覆盖校验",
-            )
-
-        if step.tool.startswith("mcp:"):
-            result_text = self.mcp_tools.call_tool(
-                tool_name=step.tool,
-                query=query,
-                context={
-                    "user_input": user_input,
-                    "skill_names": skill_names,
-                    "documents": [
-                        {
-                            "filename": document.get("filename"),
-                            "char_count": len(document.get("text", "")),
-                        }
-                        for document in self.runtime_documents
-                    ],
-                },
-            )
-            return AgentStepResult(
-                step_id=step.id,
-                goal=step.goal,
-                tool=step.tool,
-                query=query,
-                status="PASS",
-                observation=result_text[:1000],
-            )
-
-        return AgentStepResult(
-            step_id=step.id,
-            goal=step.goal,
-            tool=step.tool,
-            query=query,
-            status="SKIPPED",
-            observation=f"未知工具 {step.tool}，已跳过",
-        )
-
-    @staticmethod
-    def _format_agent_step_update(result: AgentStepResult) -> str:
-        evidence = f"，证据状态：{result.evidence_status}" if result.evidence_status else ""
-        return (
-            f"▶ 执行步骤 {result.step_id}：{result.goal}\n"
-            f"- 工具：{result.tool}\n"
-            f"- 状态：{result.status}{evidence}\n"
-            f"- 结果：{result.observation}\n\n"
-        )
 
     @staticmethod
     def _build_agent_trace_messages(

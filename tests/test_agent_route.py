@@ -1,6 +1,7 @@
 from types import SimpleNamespace
 
 from figure_agent.agent.research_agent import ResearchAgent
+from figure_agent.agent.runner import AgentExecutionTrace, AgentExecutor, AgentPlan, AgentRunner
 
 
 def _agent_without_init() -> ResearchAgent:
@@ -87,3 +88,28 @@ def test_direct_route_build_plan_does_not_call_dynamic_planner():
 
 def test_agent_trace_is_hidden_by_default():
     assert ResearchAgent._should_show_agent_trace() is False
+
+
+def test_runner_module_exposes_executor_and_runner_alias():
+    assert issubclass(AgentRunner, AgentExecutor)
+
+
+def test_agent_executor_handles_direct_answer_without_tools():
+    agent = _agent_without_init()
+    agent._last_route_decision = SimpleNamespace(use_agent_chain=False)
+    executor = AgentExecutor(agent)
+    plan = AgentPlan(
+        user_input="What is your name?",
+        skill_names=[],
+        use_rag=False,
+        steps=["direct_answer"],
+    )
+
+    trace = executor.execute(
+        user_input="What is your name?",
+        plan=plan,
+        skill_names=[],
+    )
+
+    assert isinstance(trace, AgentExecutionTrace)
+    assert trace.results == []
